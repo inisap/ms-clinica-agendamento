@@ -36,8 +36,11 @@ public class EditarAgendamentoUseCase implements EditarAgendamentoPortIn {
             throw new IdNaoExisteException(editAgendamentoInputDto.getId());
         }
 
+        System.out.println("entity diego: "+entity.get().getSituacao());
+
         //valida se pode editar devido a situacao
         if(!validaPermiteEdicao(entity.get().getSituacao())){
+            System.out.println("esta no if entity diego: "+entity.get().getSituacao());
             throw new SituacaoNaoPermiteEdicaoException(entity.get().getSituacao());
         }
 
