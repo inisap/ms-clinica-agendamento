@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "0d83f800-3408-4723-bffc-21cc1c9279a2",
+		"name": "Pos Tech Fiap Agendamento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39180784"
+	},
+	"item": [
+		{
+			"name": "ms-auth",
+			"item": [
+				{
+					"name": "Authenticacao enfermeira",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\":\"efmaria\",\r\n    \"password\":\"9876\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9000/v1/users/auth/logins"
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticacao Paciente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\":\"jocmasilva\",\r\n    \"password\":\"4321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9000/v1/users/auth/logins"
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticacao Medico",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"login\":\"drjose\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9000/v1/users/auth/logins"
+					},
+					"response": []
+				},
+				{
+					"name": "Cria Novo Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\":\"Jose da Silva\",\r\n    \"login\":\"drjose\",\r\n    \"password\":\"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9000/v1/users"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ms-agendamento",
+			"item": [
+				{
+					"name": "Lista Todos Agendamentos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2xpbmljYS1hZ2VuZGFtZW50by5sb2NhbCIsInN1YiI6ImVmbWFyaWEiLCJleHAiOjE3NTkwNzUwMjgsImlhdCI6MTc1OTA3MTQyOCwicm9sZXMiOlsiRU5GRVJNRUlSTyJdfQ.ImipzZMAeD0F1uZR5MxlhQ-sp7dsA2SWswVtJ2dDUYkDxAVOXM80oRM5S0gQyXy9hV5KzXr3onSUeMp0-MWT3C2sCmiWeNtpuN9WI46TJ1liUuKrYhA28AEONBkIzRMMUbPEY02L73ahPLFqsFKgxKKcmzHk8Fuz1_5UP_UlsnMa_xkg2N5mVUuXNvSnLpiCj6vide9TbNIgIFNUIIhxc-Yh7DoU_D1ol6Rn9UHliWldCEtskbU0V2VcJTDEU8Tm7iCXcOig1jNY7nDqRV2zI6nG3oI-AhEblIooMpcsDFZuWm9qecs6m1kILHkJUfl3m766vu8YiHxRscNYk77AeQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\": \"{ listAgendamentos { id nomePaciente dataConsulta situacao } }\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9001/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta um Agendamento por Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2xpbmljYS1hZ2VuZGFtZW50by5sb2NhbCIsInN1YiI6ImRyam9zZSIsImV4cCI6MTc1ODk4MTk2NywiaWF0IjoxNzU4OTc4MzY3LCJyb2xlcyI6WyJNRURJQ08iXX0.eu6Zk4K6Glx1ilpAsFKR4SERtAKMWfFJg_xce66PX6xBt8HYw5FUERZuWoiw83clpWtdGzwk7P5gnQNsjIPYbjZvn3SdSHqAbFrDuPUWndSwgyq7L6b6clgyAJ5uSnj2zcpeS2Vp8oPm8Ac2-kIFE_9XvDcgRSNu-0PdwnPGVq0VJfhjsTwLGaMk8h5Q9jtMyGzypbrL3bDk6WBXGEOgdLLD9t1nJZNch-dskhQYDoGihZMrvEdTiKzNDznrUxiKNbzBIfNXJJCtRvWIOQyUdyDuavL5wA6qaB-KqBNfanplS4TmxUxh7jNogrh73GeKxgqnM2zx2JfOAhfvNX_Wuw"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\": \"query($id: Int!) { listAgendamentoPorId(id: $id) { id nomePaciente dataConsulta } }\",\r\n  \"variables\": {\r\n    \"id\": 1\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9001/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Lista Todos Agendamento com base no Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2xpbmljYS1hZ2VuZGFtZW50by5sb2NhbCIsInN1YiI6ImpvY21hc2lsdmEiLCJleHAiOjE3NTg5ODM5NTUsImlhdCI6MTc1ODk4MDM1NSwicm9sZXMiOlsiUEFDSUVOVEUiXX0.Ca8cEl-4jFAnu9UIc3YraOya-nG-_ayp5RXMruPBtB734W8EmrGVKc3mDSWU-5KYYdrBJpTaArImqCDrlWlvXQ8QExNQbWyVVRunRZQrcsXsMB4hQtwsTW4Yg4f9ptgl37Jr_UJTO3qYa7VCVx8BvfvHGr6_l95TCnB1C88nunT265i-4PBvu0Q9yc7txtESronX5zqsnZrCNHzXc3cl-ay-dPLxY0D-E3A2q9oLfnUY_zgiGzU3hb7atV2EwrOZQFAfGFUUlbSv7NVLg_vXIyPbkZoI-owP7KH6u7udOm8qAHwkDqV2-VNbmyI8Yq6RWiu-zaH4Rck_y9oBZyKZIA"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\": \"query($login: String!) { listAgendamentoPorLogin(login: $login) { id nomePaciente dataConsulta situacao } }\",\r\n  \"variables\": {\r\n    \"login\": \"jocmasilva\"\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9001/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Cria um novo agendamento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2xpbmljYS1hZ2VuZGFtZW50by5sb2NhbCIsInN1YiI6ImVmbWFyaWEiLCJleHAiOjE3NTkwNzUwMjgsImlhdCI6MTc1OTA3MTQyOCwicm9sZXMiOlsiRU5GRVJNRUlSTyJdfQ.ImipzZMAeD0F1uZR5MxlhQ-sp7dsA2SWswVtJ2dDUYkDxAVOXM80oRM5S0gQyXy9hV5KzXr3onSUeMp0-MWT3C2sCmiWeNtpuN9WI46TJ1liUuKrYhA28AEONBkIzRMMUbPEY02L73ahPLFqsFKgxKKcmzHk8Fuz1_5UP_UlsnMa_xkg2N5mVUuXNvSnLpiCj6vide9TbNIgIFNUIIhxc-Yh7DoU_D1ol6Rn9UHliWldCEtskbU0V2VcJTDEU8Tm7iCXcOig1jNY7nDqRV2zI6nG3oI-AhEblIooMpcsDFZuWm9qecs6m1kILHkJUfl3m766vu8YiHxRscNYk77AeQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\": \"mutation($input: AddAgendamentoInput!) { criarAgendamento(input: $input) { id nomePaciente dataConsulta situacao } }\",\r\n  \"variables\": {\r\n    \"input\": {\r\n      \"documentoPaciente\": \"12345678900\",\r\n      \"nomePaciente\": \"Jocileide Mariano da Silva\",\r\n      \"dataConsulta\": \"2025-09-25T15:00:00\",\r\n      \"emailPaciente\": \"jocileide@email.com\",\r\n      \"login\": \"jocmasilva\"\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9001/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Edita um agendamento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2F1dGguY2xpbmljYS1hZ2VuZGFtZW50by5sb2NhbCIsInN1YiI6ImVmbWFyaWEiLCJleHAiOjE3NTkwNzUwMjgsImlhdCI6MTc1OTA3MTQyOCwicm9sZXMiOlsiRU5GRVJNRUlSTyJdfQ.ImipzZMAeD0F1uZR5MxlhQ-sp7dsA2SWswVtJ2dDUYkDxAVOXM80oRM5S0gQyXy9hV5KzXr3onSUeMp0-MWT3C2sCmiWeNtpuN9WI46TJ1liUuKrYhA28AEONBkIzRMMUbPEY02L73ahPLFqsFKgxKKcmzHk8Fuz1_5UP_UlsnMa_xkg2N5mVUuXNvSnLpiCj6vide9TbNIgIFNUIIhxc-Yh7DoU_D1ol6Rn9UHliWldCEtskbU0V2VcJTDEU8Tm7iCXcOig1jNY7nDqRV2zI6nG3oI-AhEblIooMpcsDFZuWm9qecs6m1kILHkJUfl3m766vu8YiHxRscNYk77AeQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"query\": \"mutation($input: EditAgendamentoInput!) { editarAgendamento(input: $input) { id nomePaciente dataConsulta situacao } }\",\r\n  \"variables\": {\r\n    \"input\": {\r\n      \"id\": 1,\r\n      \"documentoPaciente\": \"12345678900\",\r\n      \"nomePaciente\": \"Jocileide Mariano da Silva\",\r\n      \"dataConsulta\": \"2025-09-26T09:00:00\",\r\n      \"situacao\": \"CANCELADO\",\r\n      \"emailPaciente\": \"jocileide@email.com\"\r\n    }\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:9001/graphql"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
