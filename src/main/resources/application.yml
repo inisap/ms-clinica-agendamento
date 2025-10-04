@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: ms-agendamento-clinica
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS}
+  datasource: # ========== DATASOURCE CONFIG ==========
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa: # ========== JPA / HIBERNATE ==========
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: "classpath:keys/rsa-public.pem"
+  main:
+    web-application-type: servlet
+  graphql:
+    graphiql:
+      enable: true
+#  sql:
+#    init:
+#      mode: always
+server:
+  port: 9001
+
+
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+        security: DEBUG
+        beans:
+          factory: DEBUG

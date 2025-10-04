@@ -1,0 +1,37 @@
+type AgendamentoResponse {
+    id: ID!
+    documentoPaciente: String!
+    nomePaciente: String!
+    dataConsulta: String!
+    situacao: String!
+    emailPaciente: String!
+    login: String!
+}
+
+input AddAgendamentoInput {
+    documentoPaciente: String!
+    nomePaciente: String!
+    dataConsulta: String!
+    emailPaciente: String!
+    login: String!
+}
+
+input EditAgendamentoInput {
+    id: ID!
+    documentoPaciente: String
+    nomePaciente: String
+    dataConsulta: String
+    situacao: String
+    emailPaciente: String
+}
+
+extend type Query {
+    listAgendamentos: [AgendamentoResponse!]!
+    listAgendamentoPorLogin(login: String!): [AgendamentoResponse!]!
+    listAgendamentoPorId(id: Int!): AgendamentoResponse!
+}
+
+extend type Mutation {
+    criarAgendamento(input: AddAgendamentoInput!): AgendamentoResponse!
+    editarAgendamento(input: EditAgendamentoInput!): AgendamentoResponse!
+}
